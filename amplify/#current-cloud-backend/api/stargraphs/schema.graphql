@@ -1,0 +1,34 @@
+type Character @model {
+	id: ID!
+	name: String
+	birthYear: String
+	eyeColor: String
+	gender: String
+	height: Int
+	hairColor: String
+	mass: Int
+	skinColor: String
+	homeworld: String
+}
+
+type Planet @model {
+	id: ID!
+	name: String
+	diameter: Int
+	rotationPeriod: Int
+	orbitalPeriod: Int
+	gravity: String
+	population: Float
+	climates: [String]
+	terrains: [String]
+	surfaceWater: Float
+}
+
+type Film @model {
+	title: String
+	episodeID: Int
+	openingCrawl: String
+	director: String
+	producers: [String]
+	releaseDate: String
+}

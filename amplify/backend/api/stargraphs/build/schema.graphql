@@ -1,0 +1,341 @@
+type Character {
+  id: ID!
+  name: String
+  birthYear: String
+  eyeColor: String
+  gender: String
+  height: Int
+  hairColor: String
+  mass: Int
+  skinColor: String
+  homeworld: String
+}
+
+type Planet {
+  id: ID!
+  name: String
+  diameter: Int
+  rotationPeriod: Int
+  orbitalPeriod: Int
+  gravity: String
+  population: Float
+  climates: [String]
+  terrains: [String]
+  surfaceWater: Float
+}
+
+type Film {
+  title: String
+  episodeID: Int
+  openingCrawl: String
+  director: String
+  producers: [String]
+  releaseDate: String
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelCharacterConnection {
+  items: [Character]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelCharacterFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  birthYear: ModelStringInput
+  eyeColor: ModelStringInput
+  gender: ModelStringInput
+  height: ModelIntInput
+  hairColor: ModelStringInput
+  mass: ModelIntInput
+  skinColor: ModelStringInput
+  homeworld: ModelStringInput
+  and: [ModelCharacterFilterInput]
+  or: [ModelCharacterFilterInput]
+  not: ModelCharacterFilterInput
+}
+
+type Query {
+  getCharacter(id: ID!): Character
+  listCharacters(filter: ModelCharacterFilterInput, limit: Int, nextToken: String): ModelCharacterConnection
+  getPlanet(id: ID!): Planet
+  listPlanets(filter: ModelPlanetFilterInput, limit: Int, nextToken: String): ModelPlanetConnection
+  getFilm(id: ID!): Film
+  listFilms(filter: ModelFilmFilterInput, limit: Int, nextToken: String): ModelFilmConnection
+}
+
+input CreateCharacterInput {
+  id: ID
+  name: String
+  birthYear: String
+  eyeColor: String
+  gender: String
+  height: Int
+  hairColor: String
+  mass: Int
+  skinColor: String
+  homeworld: String
+}
+
+input UpdateCharacterInput {
+  id: ID!
+  name: String
+  birthYear: String
+  eyeColor: String
+  gender: String
+  height: Int
+  hairColor: String
+  mass: Int
+  skinColor: String
+  homeworld: String
+}
+
+input DeleteCharacterInput {
+  id: ID
+}
+
+type Mutation {
+  createCharacter(input: CreateCharacterInput!, condition: ModelCharacterConditionInput): Character
+  updateCharacter(input: UpdateCharacterInput!, condition: ModelCharacterConditionInput): Character
+  deleteCharacter(input: DeleteCharacterInput!, condition: ModelCharacterConditionInput): Character
+  createPlanet(input: CreatePlanetInput!, condition: ModelPlanetConditionInput): Planet
+  updatePlanet(input: UpdatePlanetInput!, condition: ModelPlanetConditionInput): Planet
+  deletePlanet(input: DeletePlanetInput!, condition: ModelPlanetConditionInput): Planet
+  createFilm(input: CreateFilmInput!, condition: ModelFilmConditionInput): Film
+  updateFilm(input: UpdateFilmInput!, condition: ModelFilmConditionInput): Film
+  deleteFilm(input: DeleteFilmInput!, condition: ModelFilmConditionInput): Film
+}
+
+input ModelCharacterConditionInput {
+  name: ModelStringInput
+  birthYear: ModelStringInput
+  eyeColor: ModelStringInput
+  gender: ModelStringInput
+  height: ModelIntInput
+  hairColor: ModelStringInput
+  mass: ModelIntInput
+  skinColor: ModelStringInput
+  homeworld: ModelStringInput
+  and: [ModelCharacterConditionInput]
+  or: [ModelCharacterConditionInput]
+  not: ModelCharacterConditionInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Subscription {
+  onCreateCharacter: Character @aws_subscribe(mutations: ["createCharacter"])
+  onUpdateCharacter: Character @aws_subscribe(mutations: ["updateCharacter"])
+  onDeleteCharacter: Character @aws_subscribe(mutations: ["deleteCharacter"])
+  onCreatePlanet: Planet @aws_subscribe(mutations: ["createPlanet"])
+  onUpdatePlanet: Planet @aws_subscribe(mutations: ["updatePlanet"])
+  onDeletePlanet: Planet @aws_subscribe(mutations: ["deletePlanet"])
+  onCreateFilm: Film @aws_subscribe(mutations: ["createFilm"])
+  onUpdateFilm: Film @aws_subscribe(mutations: ["updateFilm"])
+  onDeleteFilm: Film @aws_subscribe(mutations: ["deleteFilm"])
+}
+
+type ModelPlanetConnection {
+  items: [Planet]
+  nextToken: String
+}
+
+input ModelPlanetFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  diameter: ModelIntInput
+  rotationPeriod: ModelIntInput
+  orbitalPeriod: ModelIntInput
+  gravity: ModelStringInput
+  population: ModelFloatInput
+  climates: ModelStringInput
+  terrains: ModelStringInput
+  surfaceWater: ModelFloatInput
+  and: [ModelPlanetFilterInput]
+  or: [ModelPlanetFilterInput]
+  not: ModelPlanetFilterInput
+}
+
+input CreatePlanetInput {
+  id: ID
+  name: String
+  diameter: Int
+  rotationPeriod: Int
+  orbitalPeriod: Int
+  gravity: String
+  population: Float
+  climates: [String]
+  terrains: [String]
+  surfaceWater: Float
+}
+
+input UpdatePlanetInput {
+  id: ID!
+  name: String
+  diameter: Int
+  rotationPeriod: Int
+  orbitalPeriod: Int
+  gravity: String
+  population: Float
+  climates: [String]
+  terrains: [String]
+  surfaceWater: Float
+}
+
+input DeletePlanetInput {
+  id: ID
+}
+
+input ModelPlanetConditionInput {
+  name: ModelStringInput
+  diameter: ModelIntInput
+  rotationPeriod: ModelIntInput
+  orbitalPeriod: ModelIntInput
+  gravity: ModelStringInput
+  population: ModelFloatInput
+  climates: ModelStringInput
+  terrains: ModelStringInput
+  surfaceWater: ModelFloatInput
+  and: [ModelPlanetConditionInput]
+  or: [ModelPlanetConditionInput]
+  not: ModelPlanetConditionInput
+}
+
+type ModelFilmConnection {
+  items: [Film]
+  nextToken: String
+}
+
+input ModelFilmFilterInput {
+  title: ModelStringInput
+  episodeID: ModelIntInput
+  openingCrawl: ModelStringInput
+  director: ModelStringInput
+  producers: ModelStringInput
+  releaseDate: ModelStringInput
+  and: [ModelFilmFilterInput]
+  or: [ModelFilmFilterInput]
+  not: ModelFilmFilterInput
+}
+
+input CreateFilmInput {
+  title: String
+  episodeID: Int
+  openingCrawl: String
+  director: String
+  producers: [String]
+  releaseDate: String
+}
+
+input UpdateFilmInput {
+  title: String
+  episodeID: Int
+  openingCrawl: String
+  director: String
+  producers: [String]
+  releaseDate: String
+}
+
+input DeleteFilmInput {
+  id: ID
+}
+
+input ModelFilmConditionInput {
+  title: ModelStringInput
+  episodeID: ModelIntInput
+  openingCrawl: ModelStringInput
+  director: ModelStringInput
+  producers: ModelStringInput
+  releaseDate: ModelStringInput
+  and: [ModelFilmConditionInput]
+  or: [ModelFilmConditionInput]
+  not: ModelFilmConditionInput
+}

@@ -1,0 +1,42 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-star-graphs-stargraphs-211026-authRole",
+			"UnauthRoleArn": "arn:aws:iam::465046956217:role/amplify-star-graphs-stargraphs-211026-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::465046956217:role/amplify-star-graphs-stargraphs-211026-authRole",
+			"Region": "us-east-2",
+			"DeploymentBucketName": "amplify-star-graphs-stargraphs-211026-deployment",
+			"UnauthRoleName": "amplify-star-graphs-stargraphs-211026-unauthRole",
+			"StackName": "amplify-star-graphs-stargraphs-211026",
+			"StackId": "arn:aws:cloudformation:us-east-2:465046956217:stack/amplify-star-graphs-stargraphs-211026/dcce5990-3f17-11ea-9d16-0aeddbb89fe2",
+			"AmplifyAppId": "d1rk17chtovioi"
+		}
+	},
+	"api": {
+		"stargraphs": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "technical test",
+							"apiKeyExpirationDays": "365"
+						}
+					}
+				},
+				"GraphQLAPIIdOutput": "hism3zmjgvconey752adbudpne",
+				"GraphQLAPIEndpointOutput": "https://2y44zph4lfc6ljugxjggs4myze.appsync-api.us-east-2.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-cyjrxcq3l5agzcsnkddslki5fm"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-star-graphs-stargraphs-211026-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apistargraphs"
+			},
+			"lastPushTimeStamp": "2020-01-26T04:47:06.208Z",
+			"lastPushDirHash": "XcKcAYrlgzQEdzhp2oAfNiWeBX8="
+		}
+	}
+}

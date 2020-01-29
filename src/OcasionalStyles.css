@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Geostar+Fill&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Geostar&display=swap');
+
+.pink {
+    font-family: 'Geostar', cursive;
+    color: purple;
+    font-weight: bolder;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.gray {
+    font-family: 'Geostar Fill', cursive;
+    color: gray;
+    font-weight: bolder;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.character-input-style {
+    width: 50%;
+}
+
+.DownAnimation {
+    bottom: -100%;
+}
