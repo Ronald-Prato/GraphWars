@@ -73,7 +73,7 @@ export const PaginationContainer = styled.div`
     width: 10%;
     grid-column: 1/6;
     position: absolute;
-    bottom: 15%;
+    bottom: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
