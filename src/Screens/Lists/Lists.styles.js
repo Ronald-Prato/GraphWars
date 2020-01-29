@@ -63,6 +63,8 @@ const left_right = keyframes`
 export const LeftContainer = styled.div`
     grid-column: 1/7;
     grid-row: 1/12;
+    display: grid;
+    grid-template-rows: 1fr 5fr 2fr;
     width: 100%;
     box-shadow: 0 10px 12px black, inset 0 -2px 0 0 purple;
     padding: 2em;
@@ -72,8 +74,8 @@ export const LeftContainer = styled.div`
 export const PaginationContainer = styled.div`
     width: 10%;
     grid-column: 1/6;
-    position: absolute;
-    bottom: 5%;
+    /* position: absolute;
+    bottom: 5%; */
     display: flex;
     justify-content: space-between;
     align-items: center;
